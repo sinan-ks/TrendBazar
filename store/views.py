@@ -44,6 +44,12 @@ class SignInView(View):
                 return redirect('home')
         return render(request, "login.html", {"form":form})
 
+class SignOutView(View):
+
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return redirect("signin")
+
 
 class HomeView(View):
 
@@ -57,9 +63,7 @@ class HomeView(View):
             products = products.filter(category_object_id=category_id)
         
         return render(request, "home.html", {"categories": categories, "products": products})
-
-
-    
+ 
 
 class ProductDetailView(View):
 

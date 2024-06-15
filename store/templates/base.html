@@ -16,13 +16,13 @@
 
     <!-- Navbar starts -->
 
-    <div class="relative w-full bg-white">
+    <div class="relative w-full bg-white shadow">
         <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
             <div class="inline-flex items-center space-x-2">
                 <span>
                     <img src="{% static 'images/Logo.jpg' %}" alt="Logo" class="w-8 h-8">
                 </span>
-                <span class="font-bold">TREND BAZAR</span>
+                <span class="font-bold text-xl text-gray-800">TREND BAZAR</span>
             </div>
             <div class="hidden lg:block">
                 <ul class="inline-flex space-x-8">
@@ -43,15 +43,34 @@
                     </li>
                 </ul>
             </div>
-            <div class="hidden lg:block">
+            <div class="hidden lg:flex lg:items-center lg:space-x-4">
                 <a href="{% url 'cart-list' %}"
-                    class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+                    class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
                     Cart
                     <span
-                        class="inline-flex items-center rounded-md bg-yellow-50 px-1  text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
+                        class="inline-flex items-center rounded-md bg-yellow-50 px-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
                         {{item_count}}
                     </span>
                 </a>
+                <div class="relative inline-block text-left">
+                    <button type="button"
+                        class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-2 py-1 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        id="menu-button" aria-expanded="true" aria-haspopup="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                    <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+                        style="display: none;" id="dropdown-menu">
+                        <div class="py-1" role="none">
+                            <a href="{% url 'signout' %}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-600 hover:text-white"
+                                role="menuitem" id="logout-button"><b>Logout</b></a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="lg:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -113,8 +132,7 @@
                     <div class="-m-1.5 flex flex-wrap">
                         <div class="w-auto p-1.5">
                             <a href="#">
-                                <div
-                                    class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50">
+                                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <i class="fa-brands fa-facebook text-blue-900"></i>
@@ -124,8 +142,7 @@
                         </div>
                         <div class="w-auto p-1.5">
                             <a href="#">
-                                <div
-                                    class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50">
+                                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <i class="fa-brands fa-instagram text-pink-400"></i>
@@ -133,17 +150,13 @@
                                 </div>
                             </a>
                         </div>
-
-
                         <div class="w-auto p-1.5">
                             <a href="#">
-                                <div
-                                    class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50">
+                                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <i class="fa-brands fa-youtube text-red-600"></i>
                                     </svg>
-
                                 </div>
                             </a>
                         </div>
@@ -158,5 +171,22 @@
 
 </body>
 <script src="https://kit.fontawesome.com/252a556f38.js" crossorigin="anonymous"></script>
+<script>
+    document.getElementById('menu-button').addEventListener('click', function () {
+        var dropdownMenu = document.getElementById('dropdown-menu');
+        if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+            dropdownMenu.style.display = 'block';
+        } else {
+            dropdownMenu.style.display = 'none';
+        }
+    });
+
+    document.addEventListener('click', function (event) {
+        var isClickInside = document.getElementById('menu-button').contains(event.target) || document.getElementById('dropdown-menu').contains(event.target);
+        if (!isClickInside) {
+            document.getElementById('dropdown-menu').style.display = 'none';
+        }
+    });
+</script>
 
 </html>

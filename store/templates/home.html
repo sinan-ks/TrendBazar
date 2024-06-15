@@ -5,10 +5,9 @@
 <!-- Category Buttons -->
 <div class="max-w-7xl mx-auto pt-6 px-4 sm:px-6 lg:px-8">
     <div class="flex space-x-4">
-        <a href="{% url 'home' %}" class="text-sm font-semibold text-gray-800 hover:text-gray-900 bg-gray-200 px-3 py-1 rounded-md transition duration-300 hover:bg-gray-300">All</a>
+        <a href="{% url 'home' %}" class="category-button"><b>All</b></a>
         {% for category in categories %}
-        <a href="{% url 'home' %}?category={{ category.id }}"
-            class="text-sm font-semibold text-gray-800 hover:text-gray-900 bg-gray-200 px-3 py-1 rounded-md transition duration-300 hover:bg-gray-300">{{ category.name }}</a>
+        <a href="{% url 'home' %}?category={{ category.id }}" class="category-button"><b>{{ category.name }}</b></a>
         {% endfor %}
     </div>
 </div>
@@ -33,5 +32,30 @@
     </div>
     {% endfor %}
 </div>
+
+<style>
+    /* Custom Styles */
+    .category-button {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 8px 16px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        background-color: #e2e8f0;
+        /* Default background color */
+        color: #4a5568;
+        /* Default text color */
+    }
+
+    .category-button:hover {
+        background-color: #cbd5e0;
+        /* Hover background color */
+        color: #2d3748;
+        /* Hover text color */
+    }
+
+    /* Additional styles can be added here for different button variations */
+</style>
 
 {% endblock %}
