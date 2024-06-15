@@ -2,24 +2,36 @@
 
 {% block body_block %}
 
-<div
-  class="mx-auto grid w-full max-w-7xl items-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4">
-  {% for p in data %}
-  <div class="relative aspect-[16/9] w-auto rounded-md md:aspect-auto md:h-[400px]">
-    <img src="{{ p.image.url }}" alt="AirMax Pro" class="z-0 h-full w-full rounded-md object-cover" />
-    <div class="absolute inset-0 rounded-md bg-gradient-to-t from-gray-900 to-transparent"></div>
-    <div class="absolute bottom-4 left-4 text-left">
-      <h1 class="text-lg font-semibold text-white">{{ p.title }}</h1>
-      <p class="mt-2 text-sm text-gray-300">
-        {{ p.description }}
-      </p>
-      <a href="{% url 'product-detail' p.id %}"
-        class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-semibold rounded-md text-white bg-gradient-to-br from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 hover:shadow-md transition duration-300">
-        Shop Now →
-      </a>
+<!-- Category Buttons -->
+<div class="max-w-7xl mx-auto pt-6 px-4 sm:px-6 lg:px-8">
+    <div class="flex space-x-4">
+        <a href="{% url 'home' %}" class="text-sm font-semibold text-gray-800 hover:text-gray-900 bg-gray-200 px-3 py-1 rounded-md transition duration-300 hover:bg-gray-300">All</a>
+        {% for category in categories %}
+        <a href="{% url 'home' %}?category={{ category.id }}"
+            class="text-sm font-semibold text-gray-800 hover:text-gray-900 bg-gray-200 px-3 py-1 rounded-md transition duration-300 hover:bg-gray-300">{{ category.name }}</a>
+        {% endfor %}
     </div>
-  </div>
-  {% endfor %}
+</div>
+
+<!-- Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-7xl mx-auto pt-6 px-4 sm:px-6 lg:px-8">
+    {% for product in products %}
+    <div class="relative aspect-[16/9] w-auto rounded-md md:aspect-auto md:h-[400px]">
+        <img src="{{ product.image.url }}" alt="{{ product.title }}"
+            class="z-0 h-full w-full rounded-md object-cover" />
+        <div class="absolute inset-0 rounded-md bg-gradient-to-t from-gray-900 to-transparent"></div>
+        <div class="absolute bottom-4 left-4 text-left">
+            <h1 class="text-lg font-semibold text-white">{{ product.title }}</h1>
+            <p class="mt-2 text-sm text-gray-300">
+                {{ product.description }}
+            </p>
+            <a href="{% url 'product-detail' product.id %}"
+                class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-semibold rounded-md text-white bg-gradient-to-br from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 hover:shadow-md transition duration-300">
+                Shop Now →
+            </a>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 
 {% endblock %}

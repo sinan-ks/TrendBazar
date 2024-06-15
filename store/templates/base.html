@@ -3,152 +3,158 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TREND BAZAR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  {% block link_block %} {% endblock %}
+    {% block link_block %} {% endblock %}
 
 </head>
 
 <body>
 
-  <!-- Navbar starts -->
+    <!-- Navbar starts -->
 
-  <div class="relative w-full bg-white">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-      <div class="inline-flex items-center space-x-2">
-        <span>
-          <img src="{% static 'images/Logo.jpg' %}" alt="Logo" class="w-8 h-8">
-        </span>
-        <span class="font-bold">TREND BAZAR</span>
-      </div>
-      <div class="hidden lg:block">
-        <ul class="inline-flex space-x-8">
-          <li>
-            <a href="{% url 'home' %}" class="text-sm font-semibold text-gray-800 hover:text-gray-900">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#" class="text-sm font-semibold text-gray-800 hover:text-gray-900">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="#" class="text-sm font-semibold text-gray-800 hover:text-gray-900">
-              Contact
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="hidden lg:block">
-        <a href="{% url 'cart-list' %}"
-          class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
-          Cart
-          <span
-            class="inline-flex items-center rounded-md bg-yellow-50 px-1  text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
-            {{item_count}}
-          </span>
-        </a>
-      </div>
-      <div class="lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          class="h-6 w-6 cursor-pointer">
-          <line x1="4" y1="12" x2="20" y2="12"></line>
-          <line x1="4" y1="6" x2="20" y2="6"></line>
-          <line x1="4" y1="18" x2="20" y2="18"></line>
-        </svg>
-      </div>
+    <div class="relative w-full bg-white">
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
+            <div class="inline-flex items-center space-x-2">
+                <span>
+                    <img src="{% static 'images/Logo.jpg' %}" alt="Logo" class="w-8 h-8">
+                </span>
+                <span class="font-bold">TREND BAZAR</span>
+            </div>
+            <div class="hidden lg:block">
+                <ul class="inline-flex space-x-8">
+                    <li>
+                        <a href="{% url 'home' %}" class="text-sm font-semibold text-gray-800 hover:text-gray-900">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm font-semibold text-gray-800 hover:text-gray-900">
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm font-semibold text-gray-800 hover:text-gray-900">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="hidden lg:block">
+                <a href="{% url 'cart-list' %}"
+                    class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+                    Cart
+                    <span
+                        class="inline-flex items-center rounded-md bg-yellow-50 px-1  text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
+                        {{item_count}}
+                    </span>
+                </a>
+            </div>
+            <div class="lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="h-6 w-6 cursor-pointer">
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                </svg>
+            </div>
+        </div>
     </div>
-  </div>
-  <hr>
+    <hr>
 
-  <!-- Navbar ends -->
+    <!-- Navbar ends -->
 
-  {% block body_block %} {% endblock %}
+    {% block body_block %} {% endblock %}
 
-  <!-- Footer starts -->
-  <hr>
-  <section class="relative overflow-hidden bg-white py-8">
-    <div class="container relative z-10 mx-auto px-4">
-      <div class="-m-8 flex flex-wrap items-center justify-between">
-        <div class="w-auto p-8">
-          <a href="#">
-            <div class="inline-flex items-center">
-              <span>
-                <img src="{% static 'images/Logo.jpg' %}" alt="Logo" class="w-8 h-8">
-              </span>
-              <span class="ml-4 text-lg font-bold">TREND BAZAR</span>
-            </div>
-          </a>
-        </div>
-        <div class="w-auto p-8">
-          <ul class="-m-5 flex flex-wrap items-center">
-            <li class="p-5">
-              <a class="font-medium text-gray-600 hover:text-gray-700" href="#">
-                Privacy Policy
-              </a>
-            </li>
-            <li class="p-5">
-              <a class="font-medium text-gray-600 hover:text-gray-700" href="#">
-                Terms of Service
-              </a>
-            </li>
-            <li class="p-5">
-              <a class="font-medium text-gray-600 hover:text-gray-700" href="#">
-                Return Policy
-              </a>
-            </li>
-            <li class="p-5">
-              <a class="font-medium text-gray-600 hover:text-gray-700" href="#">
-                Contact Us
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="w-auto p-8">
-          <div class="-m-1.5 flex flex-wrap">
-            <div class="w-auto p-1.5">
-              <a href="#">
-                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <i class="fa-brands fa-facebook text-blue-900"></i>
-                  </svg>
+    <!-- Footer starts -->
+    <hr>
+    <section class="relative overflow-hidden bg-white py-8">
+        <div class="container relative z-10 mx-auto px-4">
+            <div class="-m-8 flex flex-wrap items-center justify-between">
+                <div class="w-auto p-8">
+                    <a href="#">
+                        <div class="inline-flex items-center">
+                            <span>
+                                <img src="{% static 'images/Logo.jpg' %}" alt="Logo" class="w-8 h-8">
+                            </span>
+                            <span class="ml-4 text-lg font-bold">TREND BAZAR</span>
+                        </div>
+                    </a>
                 </div>
-              </a>
-            </div>
-            <div class="w-auto p-1.5">
-              <a href="#">
-                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <i class="fa-brands fa-instagram text-pink-400"></i>
-                  </svg>
+                <div class="w-auto p-8">
+                    <ul class="-m-5 flex flex-wrap items-center">
+                        <li class="p-5">
+                            <a class="font-medium text-gray-600 hover:text-gray-700" href="#">
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li class="p-5">
+                            <a class="font-medium text-gray-600 hover:text-gray-700" href="#">
+                                Terms of Service
+                            </a>
+                        </li>
+                        <li class="p-5">
+                            <a class="font-medium text-gray-600 hover:text-gray-700" href="#">
+                                Return Policy
+                            </a>
+                        </li>
+                        <li class="p-5">
+                            <a class="font-medium text-gray-600 hover:text-gray-700" href="#">
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-              </a>
-            </div>
+                <div class="w-auto p-8">
+                    <div class="-m-1.5 flex flex-wrap">
+                        <div class="w-auto p-1.5">
+                            <a href="#">
+                                <div
+                                    class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <i class="fa-brands fa-facebook text-blue-900"></i>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="w-auto p-1.5">
+                            <a href="#">
+                                <div
+                                    class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <i class="fa-brands fa-instagram text-pink-400"></i>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
 
 
-            <div class="w-auto p-1.5">
-              <a href="#">
-                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <i class="fa-brands fa-youtube text-red-600"></i>
-                  </svg>
+                        <div class="w-auto p-1.5">
+                            <a href="#">
+                                <div
+                                    class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <i class="fa-brands fa-youtube text-red-600"></i>
+                                    </svg>
 
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </a>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- Footer ends -->
+    </section>
+    <!-- Footer ends -->
 
-  {% block script_block %} {% endblock %}
+    {% block script_block %} {% endblock %}
 
 </body>
 <script src="https://kit.fontawesome.com/252a556f38.js" crossorigin="anonymous"></script>

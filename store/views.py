@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import View
 from store.forms import RegistrationForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
-from store.models import Product, Size, BasketItem, Order
+from store.models import Product, Size, BasketItem, Order, Category
 import razorpay
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
@@ -47,9 +47,18 @@ class SignInView(View):
 
 class HomeView(View):
 
-    def get(self,request,*args,**kwargs):
-        qs = Product.objects.all()
-        return render(request,"home.html", {"data":qs})
+    def get(self, request, *args, **kwargs):
+        categories = Category.objects.all()  # Fetch all categories
+        category_id = request.GET.get('category')  # Get the selected category ID from query parameters
+        products = Product.objects.all()
+
+        if category_id:
+            # Assuming 'category_object' is the related field in the Product model
+            products = products.filter(category_object_id=category_id)
+        
+        return render(request, "home.html", {"categories": categories, "products": products})
+
+
     
 
 class ProductDetailView(View):
