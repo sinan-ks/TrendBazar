@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+
+{% block link_block %}
+{{ block.super }}
+{% endblock %}
+
+
 {% block body_block %}
 
 <!-- Category Buttons -->
@@ -32,30 +38,5 @@
     </div>
     {% endfor %}
 </div>
-
-<style>
-    /* Custom Styles */
-    .category-button {
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 600;
-        padding: 8px 16px;
-        border-radius: 6px;
-        transition: all 0.3s ease;
-        background-color: #e2e8f0;
-        /* Default background color */
-        color: #4a5568;
-        /* Default text color */
-    }
-
-    .category-button:hover {
-        background-color: #cbd5e0;
-        /* Hover background color */
-        color: #2d3748;
-        /* Hover text color */
-    }
-
-    /* Additional styles can be added here for different button variations */
-</style>
 
 {% endblock %}

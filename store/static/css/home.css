@@ -1,0 +1,18 @@
+.category-button {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    background-color: #e2e8f0;
+    color: #4a5568;
+
+}
+
+.category-button:hover {
+    background-color: #cbd5e0;
+    /* Hover background color */
+    color: #2d3748;
+    /* Hover text color */
+}

@@ -16,44 +16,60 @@ KEY_SECRET = "EUYpsw1cWt0VpY3QkqBAdfvC"
 class SignUpView(View):
 
     def get(self,request,*args,**kwargs):
+
         form = RegistrationForm()
+
         return render(request, "register.html", {"form":form})
     
     def post(self,request,*args,**kwargs):
+
         form = RegistrationForm(request.POST)
+
         if form.is_valid():
             form.save()
+
             return redirect("signin")
+        
         return render(request, "login.html", {"form":form})
     
     
 class SignInView(View):
 
     def get(self,request,*args,**kwargs):
+
         form = LoginForm()
+
         return render(request, "login.html", {"form":form})
     
     def post(self,request,*args,**kwargs):
+
         form = LoginForm(request.POST)
+
         if form.is_valid():
             uname = form.cleaned_data.get('username')
             pwd = form.cleaned_data.get('password')
             user_object = authenticate(request, username=uname, password=pwd)
             if user_object:
                 login(request, user_object)
+
                 return redirect('home')
+            
         return render(request, "login.html", {"form":form})
+
 
 class SignOutView(View):
 
     def get(self, request, *args, **kwargs):
+
         logout(request)
+
         return redirect("signin")
 
 
 class HomeView(View):
 
     def get(self, request, *args, **kwargs):
+
         categories = Category.objects.all()  # Fetch all categories
         category_id = request.GET.get('category')  # Get the selected category ID from query parameters
         products = Product.objects.all()
@@ -68,8 +84,10 @@ class HomeView(View):
 class ProductDetailView(View):
 
     def get(self, request, *args, **kwargs):
+
         id = kwargs.get('pk')
         qs = Product.objects.get(id=id)
+
         return render(request, 'product_detail.html', {"data":qs})
     
 
@@ -78,6 +96,7 @@ class ProductDetailView(View):
 class AddToCartView(View):
 
     def post(self, request, *args, **kwargs):
+
         id = kwargs.get('pk')
         product_obj = Product.objects.get(id=id)
         size_name = request.POST.get("size")
@@ -97,7 +116,9 @@ class AddToCartView(View):
 class CartItemListView(View):
 
     def get(self, request, *args, **kwargs):
+
         qs = request.user.cart.cartitems.filter(is_order_placed=False)
+
         return render(request, "cart_items.html",{"data":qs})
     
 
@@ -105,9 +126,11 @@ class CartItemListView(View):
 class BasketItemDeleteView(View):
 
     def get(self, request, *args, **kwargs):
+
         id = kwargs.get("pk")
         basket_item_object = BasketItem.objects.get(id=id)
         basket_item_object.delete()
+
         return redirect("cart-list")
     
 
@@ -115,6 +138,7 @@ class BasketItemDeleteView(View):
 class BasketItemUpdateQuantityView(View):
 
     def post(self, request, *args, **kwargs):
+
         id = kwargs.get('pk')
         basket_item_obj = BasketItem.objects.get(id=id)
 
@@ -131,9 +155,11 @@ class BasketItemUpdateQuantityView(View):
 class CheckOutView(View):
 
     def get(self, request, *args, **kwargs):
+
         return render(request, "checkout.html")
     
     def post(self, request, *args, **kwargs):
+
         phone = request.POST.get('phone')
         email = request.POST.get('email')
         address = request.POST.get('delivery_address')
@@ -174,6 +200,7 @@ class CheckOutView(View):
 class MyOrdersView(View):
 
     def get(self, request, *args, **kwargs):
+
         qs = Order.objects.filter(user_object=request.user).exclude(status="cancelled")
         return render(request, "myorder.html", {"data":qs})
     
@@ -182,6 +209,7 @@ class MyOrdersView(View):
 class PaymentVerificationView(View):
 
     def post(self, request, *args, **kwargs):
+
         print(request.POST)
 
         data = request.POST

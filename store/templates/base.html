@@ -8,7 +8,9 @@
     <title>TREND BAZAR</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    {% block link_block %} {% endblock %}
+    {% block link_block %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    {% endblock %}
 
 </head>
 
@@ -169,24 +171,26 @@
 
     {% block script_block %} {% endblock %}
 
-</body>
-<script src="https://kit.fontawesome.com/252a556f38.js" crossorigin="anonymous"></script>
-<script>
-    document.getElementById('menu-button').addEventListener('click', function () {
-        var dropdownMenu = document.getElementById('dropdown-menu');
-        if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
-            dropdownMenu.style.display = 'block';
-        } else {
-            dropdownMenu.style.display = 'none';
-        }
-    });
 
-    document.addEventListener('click', function (event) {
-        var isClickInside = document.getElementById('menu-button').contains(event.target) || document.getElementById('dropdown-menu').contains(event.target);
-        if (!isClickInside) {
-            document.getElementById('dropdown-menu').style.display = 'none';
-        }
-    });
-</script>
+    <script src="https://kit.fontawesome.com/252a556f38.js" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('menu-button').addEventListener('click', function () {
+            var dropdownMenu = document.getElementById('dropdown-menu');
+            if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+                dropdownMenu.style.display = 'block';
+            } else {
+                dropdownMenu.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', function (event) {
+            var isClickInside = document.getElementById('menu-button').contains(event.target) || document.getElementById('dropdown-menu').contains(event.target);
+            if (!isClickInside) {
+                document.getElementById('dropdown-menu').style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
 
 </html>

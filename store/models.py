@@ -184,8 +184,10 @@ class Order(models.Model):
 
 
 def create_basket(sender,instance,created,**kwargs):
+
     if created:
         Basket.objects.create(owner=instance)
+        
 post_save.connect(sender=User,receiver=create_basket)
 
 

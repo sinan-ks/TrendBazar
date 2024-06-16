@@ -3,6 +3,7 @@ from store import views
 
 
 urlpatterns = [
+
     path("register/",views.SignUpView.as_view(),name="signup"),
     path("",views.SignInView.as_view(),name="signin"),
     path("home/",views.HomeView.as_view(),name="home"),
@@ -15,4 +16,5 @@ urlpatterns = [
     path("checkout/", views.CheckOutView.as_view(), name="checkout"),
     path("orders/all/", views.MyOrdersView.as_view(), name="orders"),
     path("verify/", views.PaymentVerificationView.as_view(), name="verification"),
+    
 ]
